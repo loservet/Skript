@@ -1,0 +1,293 @@
+variables:
+    [{pet.level::*} = 1
+    {pet.entities::*} = "" # Petlerin gerçek varlıkları]
+
+
+command /pets:
+    trigger:
+        set {_menu} to chest inventory with 6 rows named "&6Pet Menüsü"
+        set slot 0 and 1 and 2 and 3 and 4 and 5 and 6 and 7 and 8 and 9 and 17 and 18 and 26 and 27 and 35 and 36 and 44 and 45 and 46 and 47 and 48 and 50 and 51 and 52 and 53 of {_menu} to gray stained glass pane named "&f "
+        if player has permission "loservet.pet" or "head.*":
+            set slot 10 of {_menu} to skull of "Loservet" parsed as offline player named "&dLoservet"
+        else:
+            set slot 10 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        if player has permission "yuskathecat.pet" or "head.*":
+            set slot 11 of {_menu} to skull of "YuskaTheCat" parsed as offline player named "&6YuskaTheCat"
+        else:
+            set slot 11 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        if player has permission "rowrain.pet" or "head.*":
+            set slot 12 of {_menu} to skull of "rowdev" parsed as offline player named "&dRowRain"
+        else:
+            set slot 12 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        if player has permission "acroz.pet" or "head.*":
+            set slot 13 of {_menu} to skull of "_Acroz_" parsed as offline player named "&6_Acroz_"
+        else:
+            set slot 13 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        if player has permission "kayera.pet" or "head.*":
+            set slot 14 of {_menu} to skull of "kyrqt" parsed as offline player named "&6Kayera"
+        else:
+            set slot 14 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        if player has permission "1yuqas.pet" or "head.*":
+            set slot 15 of {_menu} to skull of "1Yuqas" parsed as offline player named "&f1Yuqas"
+        else:
+            set slot 15 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+
+        if player has permission "ekky25.pet" or "head.*":
+            set slot 16 of {_menu} to skull of "ekky" parsed as offline player named "&3ekky25"
+        else:
+            set slot 16 of {_menu} to skull of "KingRDP" parsed as offline player named "&fa"
+
+        set slot 19 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 20 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 21 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 22 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 23 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 24 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 25 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 28 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 29 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 30 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 31 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 32 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 33 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 34 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 37 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 38 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 39 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 40 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 41 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 42 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 43 of {_menu} to skull of "KingRDP" parsed as offline player named "&f"
+        set slot 49 of {_menu} to barrier named "&cPet'i Kaldır"
+        
+        open {_menu} to player
+
+on inventory click:
+    if name of event-inventory is "&6Pet Menüsü":
+        cancel event
+        if name of event-item is "&dLoservet":
+            if {pets::%player's uuid%} is not set:
+                send "&dLoservet Petini çağırdın!!" to player
+                spawn 1 armor stand at player with nbt from "{Small:1,Invisible:1,NoGravity:1}"
+                teleport last spawned armor stand to location({_x}, {_y}, {_z})
+                set {_pet} to last spawned armor stand
+                set helmet of {_pet} to player head
+                set the helmet of {_pet} to skull of ("Loservet" parsed as offline player)
+                set {pets::%player's uuid%} to {_pet}
+                set display name of last spawned armor stand to "&dLoservet [Lv. 99]"
+            else if {pets::%player's uuid%} is set:
+                send "&cZaten Petin var önce çıkarmalısın" to player
+
+on inventory click:
+    if name of event-inventory is "&6Pet Menüsü":
+        cancel event
+        if name of event-item is "&6YuskaTheCat":
+            if {pets::%player's uuid%} is not set:
+                send "&6YuskaTheCat Petini çağırdın!!" to player
+                spawn 1 armor stand at player with nbt from "{Small:1,Invisible:1,NoGravity:1}"
+                teleport last spawned armor stand to location({_x}, {_y}, {_z})
+                set {_pet} to last spawned armor stand
+                set helmet of {_pet} to player head
+                set the helmet of {_pet} to skull of ("YuskaTheCat" parsed as offline player)
+                set {pets::%player's uuid%} to {_pet}
+                set display name of last spawned armor stand to "&6YuskaTheCat [Lv. 99]"
+            else if {pets::%player's uuid%} is set:
+                send "&cZaten Petin var önce çıkarmalısın" to player
+
+on inventory click:
+    if name of event-inventory is "&6Pet Menüsü":
+        cancel event
+        if name of event-item is "&dRowRain":
+            if {pets::%player's uuid%} is not set:
+                send "&dRowRain Petini çağırdın!!" to player
+                spawn 1 armor stand at player with nbt from "{Small:1,Invisible:1,NoGravity:1}"
+                teleport last spawned armor stand to location({_x}, {_y}, {_z})
+                set {_pet} to last spawned armor stand
+                set helmet of {_pet} to player head
+                set the helmet of {_pet} to skull of ("rowdev" parsed as offline player)
+                set {pets::%player's uuid%} to {_pet}
+                set display name of last spawned armor stand to "&dRowRain [Lv. 99]"
+            else if {pets::%player's uuid%} is set:
+                send "&cZaten Petin var önce çıkarmalısın" to player
+
+on inventory click:
+    if name of event-inventory is "&6Pet Menüsü":
+        cancel event
+        if name of event-item is "&6_Acroz_":
+            if {pets::%player's uuid%} is not set:
+                send "&6_Acroz_ Petini çağırdın!!" to player
+                spawn 1 armor stand at player with nbt from "{Small:1,Invisible:1,NoGravity:1}"
+                teleport last spawned armor stand to location({_x}, {_y}, {_z})
+                set {_pet} to last spawned armor stand
+                set helmet of {_pet} to player head
+                set the helmet of {_pet} to skull of ("_Acroz_" parsed as offline player)
+                set {pets::%player's uuid%} to {_pet}
+                set display name of last spawned armor stand to "&6_Acroz_ [Lv. 99]"
+            else if {pets::%player's uuid%} is set:
+                send "&cZaten Petin var önce çıkarmalısın" to player
+
+on inventory click:
+    if name of event-inventory is "&6Pet Menüsü":
+        cancel event
+        if name of event-item is "&6Kayera":
+            if {pets::%player's uuid%} is not set:
+                send "&6Kayera Petini çağırdın!!" to player
+                spawn 1 armor stand at player with nbt from "{Small:1,Invisible:1,NoGravity:1}"
+                teleport last spawned armor stand to location({_x}, {_y}, {_z})
+                set {_pet} to last spawned armor stand
+                set helmet of {_pet} to player head
+                set the helmet of {_pet} to skull of ("kyrqt" parsed as offline player)
+                set {pets::%player's uuid%} to {_pet}
+                set display name of last spawned armor stand to "&6Kayera [Lv. 99]"
+            else if {pets::%player's uuid%} is set:
+                send "&cZaten Petin var önce çıkarmalısın" to player
+
+on inventory click:
+    if name of event-inventory is "&6Pet Menüsü":
+        cancel event
+        if name of event-item is "&f1Yuqas":
+            if {pets::%player's uuid%} is not set:
+                send "&f1Yuqas Petini çağırdın!!" to player
+                spawn 1 armor stand at player with nbt from "{Small:1,Invisible:1,NoGravity:1}"
+                teleport last spawned armor stand to location({_x}, {_y}, {_z})
+                set {_pet} to last spawned armor stand
+                set helmet of {_pet} to player head
+                set the helmet of {_pet} to skull of ("1Yuqas" parsed as offline player)
+                set {pets::%player's uuid%} to {_pet}
+                set display name of last spawned armor stand to "&f1Yuqas [Lv. 99]"
+            else if {pets::%player's uuid%} is set:
+                send "&cZaten Petin var önce çıkarmalısın" to player   
+
+on inventory click:
+    if name of event-inventory is "&6Pet Menüsü":
+        cancel event
+        if name of event-item is "&3ekky25":
+            if {pets::%player's uuid%} is not set:
+                send "&3ekky25 Petini çağırdın!!" to player
+                spawn 1 armor stand at player with nbt from "{Small:1,Invisible:1,NoGravity:1}"
+                teleport last spawned armor stand to location({_x}, {_y}, {_z})
+                set {_pet} to last spawned armor stand
+                set helmet of {_pet} to player head
+                set the helmet of {_pet} to skull of ("ekky" parsed as offline player)
+                set {pets::%player's uuid%} to {_pet}
+                set display name of last spawned armor stand to "&3ekky25 [Lv. 99]"
+            else if {pets::%player's uuid%} is set:
+                send "&cZaten Petin var önce çıkarmalısın" to player   
+
+
+
+
+
+
+
+on inventory click:
+    if name of event-inventory is "&6Pet Menüsü":
+        cancel event
+        if name of event-item is "&cPet'i Kaldır":
+            if {pets::%player's uuid%} is set:
+                play sound "ENTITY_ENDERMAN_TELEPORT" with volume 1 and pitch 1 to player
+                kill {pets::%player's uuid%}
+                delete {pets::%player's uuid%}
+                send "&aPetin başarıyla kaldırıldı!" to player
+            else:
+                send "&cZaten bir petin yok!" to player
+            
+
+
+
+command /removepet:
+    trigger:
+        if {pets::%player's uuid%} is set:
+            play sound "ENTITY_ENDERMAN_TELEPORT" with volume 1 and pitch 1 to player
+            kill {pets::%player's uuid%}
+            delete {pets::%player's uuid%}
+            send "&aPetin başarıyla kaldırıldı!" to player
+        else:
+            send "&cZaten bir petin yok!" to player
+
+
+
+
+
+
+
+
+
+
+on any player move:
+    if entity is a player:
+        set {_y} to player's y coord + 2
+        set {_x} to player's x coord + 0
+        set {_z} to player's z coord + 0
+        add 30 to {yaw}
+        add 0 to {_pitch}
+        set {_test} to location {_x}, {_y}, {_z} in world "world"
+        set {_test}'s yaw to {yaw}
+        teleport {pets::%player's uuid%} to {_test}
+
+            
+command /headloservet:
+    permission: head.giver
+    trigger:
+        give 1 of skull of "Loservet" parsed as offline player named "&dLoservet" with lore "&aSağ tıkla ve /pets de gözüksün" to player
+
+on right click:
+    if name of tool of player is "&dLoservet":
+        send action bar "&dLoservet &5Petini aktifleştirdi." to player
+        remove 1 of player's tool from player's inventory
+        execute console command "lp user %player% permission set loservet.pet"
+
+command /headyuskathecat:
+    permission: head.giver
+    trigger:
+        give 1 of skull of "YuskaTheCat" parsed as offline player named "&6YuskaTheCat" with lore "&aSağ tıkla ve /pets de gözüksün" to player
+
+on right click:
+    if name of tool of player is "&6YuskaTheCat":
+        send action bar "&6YuskaTheCat &ePetini aktifleştirdi." to player
+        remove 1 of player's tool from player's inventory
+        execute console command "lp user %player% permission set yuskathecat.pet"
+
+command /headrowrain:
+    permission: head.giver
+    trigger:
+        give 1 of skull of "rowdev" parsed as offline player named "&dRowRain" with lore "&aSağ tıkla ve /pets de gözüksün" to player
+
+on right click:
+    if name of tool of player is "&dRowRain":
+        send action bar "&dRowRain &5Petini aktifleştirdi." to player
+        remove 1 of player's tool from player's inventory
+        execute console command "lp user %player% permission set rowrain.pet"
+
+command /headacroz:
+    permission: head.giver
+    trigger:
+        give 1 of skull of "_acroz_" parsed as offline player named "&6_Acroz_" with lore "&aSağ tıkla ve /pets de gözüksün" to player
+
+on right click:
+    if name of tool of player is "&6_Acroz_":
+        send action bar "&6_Acroz_ &5Petini aktifleştirdi." to player
+        remove 1 of player's tool from player's inventory
+        execute console command "lp user %player% permission set acroz.pet"
+
+command /headkayera:
+    permission: head.giver
+    trigger:
+        give 1 of skull of "_acroz_" parsed as offline player named "&6_Acroz_" with lore "&aSağ tıkla ve /pets de gözüksün" to player
+
+on right click:
+    if name of tool of player is "&6Kayera":
+        send action bar "&6Kayera &5Petini aktifleştirdi." to player
+        remove 1 of player's tool from player's inventory
+        execute console command "lp user %player% permission set kayera.pet"
+
+command /head1yuqas:
+    permission: head.giver
+    trigger:
+        give 1 of skull of "1Yuqas" parsed as offline player named "&f1Yuqas" with lore "&aSağ tıkla ve /pets de gözüksün" to player
+
+on right click:
+    if name of tool of player is "&f1Yuqas":
+        send action bar "&f1Yuqas &5Petini aktifleştirdi." to player
+        remove 1 of player's tool from player's inventory
+        execute console command "lp user %player% permission set 1yuqas.pet"
